@@ -12,11 +12,9 @@ var SongModel = Backbone.Model.extend({
     this.trigger('dequeue',this)
   },
   clearSong: function(){
-    //console.log("Attempting to clear song")
     this.trigger('clearSong',this)
   },
   currentSongQueue: function(){
-    //console.log("Attempting to clear song")
     this.trigger('currentSongQueue',this)
   }
 

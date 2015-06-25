@@ -7,12 +7,8 @@ var SongQueueEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      //this.model.play();
       this.model.dequeue();
-    }/*,
-    "ended": function(){
-      this.model.currentSongQueue();
-    }*/
+    }
   },
 
   render: function(){
