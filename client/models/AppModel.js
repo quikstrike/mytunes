@@ -17,17 +17,36 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', song);
 
     }, this);
+
     params.library.on('enqueue', function(song){
       this.get("songQueue").add(song)
-      //console.log(this.get("songQueue")  )
-      //this.songQueue.add('songQueue', song)
-      //console.log("Here")
-      //add logic for adding to queue
-      //add "this" to song queue collection model
+      if(this.get("currentSong").get("artist") === undefined){
+        this.set('currentSong', song);
+      }
+     }, this);
 
-
-
+    this.get('songQueue').on('dequeue', function(song){
+      //console.log("dequeueing song")
+      this.get("songQueue").remove(song)
     }, this);
+
+    this.get('songQueue').on('currentSongQueue', function(song){
+      this.get("songQueue").remove(song)
+      //console.log(this.get('songQueue').at(0))
+      this.set("currentSong", this.get('songQueue').at(0))
+      console.log(this.get('currentSong'))
+      //this.get("songQueue").remove(song)
+    }, this);
+
+
+    /*
+    this.get('currentSong').on('clearSong', function(song){
+      //.unset("currentSong");
+      console.log("something")
+    }, this);
+  */
+
+
   }
 
 });

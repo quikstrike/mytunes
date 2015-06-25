@@ -14,7 +14,6 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.model.get("songQueue").on('all', function(model){
-      console.log("Heard this event")
       this.queueView.render();
 
     }, this);
